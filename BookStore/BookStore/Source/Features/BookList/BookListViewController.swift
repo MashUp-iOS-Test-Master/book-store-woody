@@ -47,6 +47,7 @@ final class BookListViewController: BaseViewController {
         activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now()+1.0) { [weak self] in
             if let books = UserDefaults.standard.read(key: .books, type: [Book].self){
+                print(books)
                 self?.applySnapShot(section: [.list(books.map { .book($0) })])
             } else {
                 self?.applySnapShot(section: [.empty])
@@ -66,13 +67,14 @@ final class BookListViewController: BaseViewController {
                 snapshot.appendItems([.empty])
             }
         }
-        self.bookListDataSource.apply(snapshot, animatingDifferences: true)
+        self.bookListDataSource.apply(snapshot, animatingDifferences: false)
     }
 
     @objc func addBook() {
         let addBookViewController = AddBookViewController()
         let navigationController = UINavigationController()
         navigationController.setViewControllers([addBookViewController], animated: false)
+        navigationController.modalPresentationStyle = .fullScreen
         self.present(navigationController, animated: true)
     }
 }
@@ -88,7 +90,8 @@ extension BookListViewController {
         bookListTableView.dataSource = bookListDataSource
         bookListTableView.register(BookTableViewCell.self)
         bookListTableView.register(EmptyBookTableViewCell.self)
-        bookListTableView.separatorStyle = .none
+        bookListTableView.separatorStyle = .singleLine
+        bookListTableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
     }
 
     private func setNavigationBar() {

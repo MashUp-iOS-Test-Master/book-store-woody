@@ -44,6 +44,7 @@ final class BookTableViewCell: BaseTableViewCell<Book> {
         bookDetailBottomStackView.distribution = .fill
         bookDetailBottomStackView.spacing = 8
 
+        bookImageView.backgroundColor = .lightGray
         bookImageView.contentMode = .scaleAspectFit
         bookImageView.backgroundColor = .clear
         bookImageView.layer.cornerRadius = 10

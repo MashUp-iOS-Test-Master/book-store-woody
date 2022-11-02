@@ -103,15 +103,37 @@ final class AddBookViewController: BaseViewController {
     }
 
     @objc func storeBook() {
+        guard let name = bookNameTextField.text else { return }
+        let category = categories[selectedCategoryIndex]
+        guard let publishedAtDate = publishedAtLabel.text else { return }
+        guard let priceText = priceTextField.text?.replacingOccurrences(of: ",", with: ""),
+              let price = Formatter.amountFormatter.number(from: priceText) as? Int else { return }
+        let book = Book(name: name, price: price, publishedAt: publishedAtDate, category: category, imageName: "ic_empty")
 
+        let currentBook = UserDefaults.standard.read(key: .books, type: [Book].self) ?? []
+        let success = UserDefaults.standard.store(data: currentBook + [book], key: .books)
+        if success {
+            self.dismiss(animated: true)
+        }
     }
 
-    @objc func categorySegmentControlValueChanged() {
-
+    @objc func cancel() {
+        self.dismiss(animated: true)
     }
 
-    @objc func publishedAtDatePickerValueChanged() {
+    @objc func categorySegmentControlValueChanged(_ segmentControl: UISegmentedControl) {
+        selectedCategoryIndex = segmentControl.selectedSegmentIndex
+    }
 
+    @objc func publishedAtDatePickerValueChanged(_ datePicker: UIDatePicker) {
+        publishedAtLabel.text = Formatter.dateFormatter.string(from: datePicker.date)
+    }
+
+    @objc func priceTextFieldValueChanged(_ textField: UITextField) {
+
+        guard let text = textField.text?.replacingOccurrences(of: ",", with: ""),
+              let price = Formatter.amountFormatter.number(from: text) as? Int else { return }
+        priceTextField.text = Formatter.amountFormatter.string(from: NSNumber(value: price))
     }
 }
 
@@ -126,7 +148,11 @@ extension AddBookViewController {
         navigationItem.backButtonTitle = ""
         navigationItem.title = "책 추가하기"
         navigationController?.navigationBar.tintColor = .white
-
+        navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(cancel)
+        )
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
@@ -180,10 +206,11 @@ extension AddBookViewController {
     private func setPriceTextField() {
         priceTextField.clearButtonMode = .whileEditing
         priceTextField.leftView = UIView(frame: .init(origin: .zero, size: .init(width: 20, height: bookNameTextField.frame.height)))
-        priceTextField.placeholder = "12,000원"
+        priceTextField.placeholder = "12,000"
         priceTextField.font = .gmarksans(weight: .medium, size: 15)
         priceTextField.borderStyle = .roundedRect
         priceTextField.keyboardType = .numberPad
         priceTextField.textAlignment = .right
+        priceTextField.addTarget(self, action: #selector(priceTextFieldValueChanged), for: .editingChanged)
     }
 }
