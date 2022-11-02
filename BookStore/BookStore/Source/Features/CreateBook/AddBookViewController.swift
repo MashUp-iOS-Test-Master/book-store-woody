@@ -37,7 +37,7 @@ final class AddBookViewController: BaseViewController, AddBookBusinessLogic {
 
     init(localStorage: LocalStorage = UserDefaults.standard) {
         self.localStorage = localStorage
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {

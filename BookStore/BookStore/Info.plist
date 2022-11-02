@@ -8,10 +8,5 @@
 		<string>GmarketSansTTFMedium.ttf</string>
 		<string>GmarketSansTTFBold.ttf</string>
 	</array>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
-	</dict>
 </dict>
 </plist>

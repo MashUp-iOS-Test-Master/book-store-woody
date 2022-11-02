@@ -26,10 +26,10 @@
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
 		EF48C1D82912DBD000345F16 /* AddBookViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */; };
 		EF48C1DA2912DD9500345F16 /* MockLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */; };
+		EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
 		EFC865FB291253E90047247F /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865FA291253E90047247F /* BookListViewController.swift */; };
-		EFC865FE291253E90047247F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC865FC291253E90047247F /* Main.storyboard */; };
 		EFC86600291253EA0047247F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC865FF291253EA0047247F /* Assets.xcassets */; };
 		EFC86603291253EA0047247F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC86601291253EA0047247F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -64,11 +64,11 @@
 		EF48C1CE2912DBA000345F16 /* BookStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewControllerTests.swift; sourceTree = "<group>"; };
 		EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalStorage.swift; sourceTree = "<group>"; };
+		EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorage.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFC865F8291253E90047247F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EFC865FA291253E90047247F /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
-		EFC865FD291253E90047247F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFC865FF291253EA0047247F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFC86602291253EA0047247F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFC86604291253EA0047247F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				EF48C1B6291263F200345F16 /* Fonts */,
-				EFC865FC291253E90047247F /* Main.storyboard */,
 				EFC865FF291253EA0047247F /* Assets.xcassets */,
 				EFC86601291253EA0047247F /* LaunchScreen.storyboard */,
 			);
@@ -111,6 +110,7 @@
 				EFC865F8291253E90047247F /* SceneDelegate.swift */,
 				EF48C1AC2912606400345F16 /* Utils */,
 				EF48C1A92912604200345F16 /* Models */,
+				EF48C1DD2912E45800345F16 /* Manager */,
 				EF48C1A229125D3000345F16 /* Features */,
 			);
 			path = Source;
@@ -232,6 +232,14 @@
 				EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		EF48C1DD2912E45800345F16 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		EFC865EA291253E90047247F = {
@@ -359,7 +367,6 @@
 			files = (
 				EFC86603291253EA0047247F /* LaunchScreen.storyboard in Resources */,
 				EFC86600291253EA0047247F /* Assets.xcassets in Resources */,
-				EFC865FE291253E90047247F /* Main.storyboard in Resources */,
 				EF48C1BC291263F800345F16 /* GmarketSansTTFLight.ttf in Resources */,
 				EF48C1BA291263F800345F16 /* GmarketSansTTFMedium.ttf in Resources */,
 				EF48C1BB291263F800345F16 /* GmarketSansTTFBold.ttf in Resources */,
@@ -395,6 +402,7 @@
 				EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */,
 				EF48C1A629125D5000345F16 /* BookListDataSource.swift in Sources */,
 				EF48C1982912596900345F16 /* AddBookViewController.swift in Sources */,
+				EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */,
 				EF48C1B12912612600345F16 /* BaseTableViewCell.swift in Sources */,
 				EF48C1A1291259FA00345F16 /* BaseViewController.swift in Sources */,
 				EF48C1C329128A6900345F16 /* UINavigationBarAppearance+Appearance.swift in Sources */,
@@ -412,14 +420,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EFC865FC291253E90047247F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EFC865FD291253E90047247F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EFC86601291253EA0047247F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -604,7 +604,6 @@
 				INFOPLIST_FILE = BookStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,7 +631,6 @@
 				INFOPLIST_FILE = BookStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

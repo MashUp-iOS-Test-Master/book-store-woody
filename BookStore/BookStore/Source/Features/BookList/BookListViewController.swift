@@ -17,6 +17,17 @@ final class BookListViewController: BaseViewController {
     lazy var totalPriceTitleLabel = UILabel()
     lazy var totalPriceLabel = UILabel()
 
+    let bookLocalStorage: BookLocalStorage
+
+    init(bookLocalStorage: BookLocalStorage = BookLocalStorageImpl()) {
+        self.bookLocalStorage = bookLocalStorage
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: Life Cycle
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +81,7 @@ final class BookListViewController: BaseViewController {
     func requestBookList() {
         activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: .now()+1.0) { [weak self] in
-            if let books = UserDefaults.standard.read(key: .books, type: [Book].self) {
+            if let books = self?.bookLocalStorage.read() {
                 self?.display(books: books)
             } else {
                 self?.display(books: [])
@@ -170,4 +181,20 @@ extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let itemIdentifier = bookListDataSource.itemIdentifier(for: indexPath) else { return nil }
+        guard case .book(let model) = itemIdentifier else { return nil }
+
+        let delete = UIContextualAction(style: .normal, title: "삭제") { [weak self] action, view, success in
+
+            guard let result = self?.bookLocalStorage.remove(data: model) else { fatalError() }
+            success(result)
+            self?.requestBookList()
+        }
+        delete.image = UIImage(systemName: "xmark.circle")
+        delete.backgroundColor = .systemRed
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+
 }
