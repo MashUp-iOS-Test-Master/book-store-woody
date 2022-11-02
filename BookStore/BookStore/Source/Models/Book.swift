@@ -5,16 +5,16 @@
 //  Created by Jaeyong Lee on 2022/11/02.
 //
 
-import Foundation
+import UIKit
 
-struct Book: Hashable {
+struct Book: Hashable, Codable {
     let name: String
     let price: Int
     let publishedAt: String
     let category: Category
     let imageName: String?
 
-    enum Category: String {
+    enum Category: String, Codable {
         case sosal = "소설"
         case tech = "기술"
         case economy = "경제"

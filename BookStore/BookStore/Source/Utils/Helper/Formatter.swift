@@ -13,4 +13,11 @@ struct Formatter {
         formatter.numberStyle = .decimal
         return formatter
     }()
+
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeZone = NSTimeZone.local
+        formatter.dateFormat = "YYYY년 MM월 dd일"
+        return formatter
+    }()
 }

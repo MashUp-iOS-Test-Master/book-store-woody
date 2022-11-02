@@ -7,6 +7,8 @@
 
 import UIKit
 
+struct EmptyHashableModel: Hashable {}
+
 class BaseTableViewCell<T: Hashable>: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

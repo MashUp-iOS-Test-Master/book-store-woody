@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF48C1982912596900345F16 /* CreateBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1972912596900345F16 /* CreateBookViewController.swift */; };
+		EF48C1982912596900345F16 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1972912596900345F16 /* AddBookViewController.swift */; };
 		EF48C19C291259B500345F16 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EF48C19B291259B500345F16 /* SnapKit */; };
 		EF48C1A1291259FA00345F16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1A0291259FA00345F16 /* BaseViewController.swift */; };
 		EF48C1A629125D5000345F16 /* BookListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1A529125D5000345F16 /* BookListDataSource.swift */; };
@@ -21,6 +21,9 @@
 		EF48C1BB291263F800345F16 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF48C1B8291263F800345F16 /* GmarketSansTTFBold.ttf */; };
 		EF48C1BC291263F800345F16 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF48C1B9291263F800345F16 /* GmarketSansTTFLight.ttf */; };
 		EF48C1BF2912664000345F16 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1BE2912664000345F16 /* UIFont+.swift */; };
+		EF48C1C329128A6900345F16 /* UINavigationBarAppearance+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */; };
+		EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C42912959A00345F16 /* LocalStorage.swift */; };
+		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
 		EFC865FB291253E90047247F /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865FA291253E90047247F /* BookListViewController.swift */; };
@@ -30,7 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EF48C1972912596900345F16 /* CreateBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookViewController.swift; sourceTree = "<group>"; };
+		EF48C1972912596900345F16 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		EF48C1A0291259FA00345F16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EF48C1A529125D5000345F16 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
 		EF48C1A729125F7700345F16 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
@@ -43,6 +46,9 @@
 		EF48C1B8291263F800345F16 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		EF48C1B9291263F800345F16 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
 		EF48C1BE2912664000345F16 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBarAppearance+Appearance.swift"; sourceTree = "<group>"; };
+		EF48C1C42912959A00345F16 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookTableViewCell.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFC865F8291253E90047247F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +118,6 @@
 				EF48C1C0291268D600345F16 /* Cell */,
 				EFC865FA291253E90047247F /* BookListViewController.swift */,
 				EF48C1A529125D5000345F16 /* BookListDataSource.swift */,
-				EF48C1B42912639800345F16 /* Formatter.swift */,
 			);
 			path = BookList;
 			sourceTree = "<group>";
@@ -120,7 +125,7 @@
 		EF48C1A429125D4200345F16 /* CreateBook */ = {
 			isa = PBXGroup;
 			children = (
-				EF48C1972912596900345F16 /* CreateBookViewController.swift */,
+				EF48C1972912596900345F16 /* AddBookViewController.swift */,
 			);
 			path = CreateBook;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 		EF48C1AC2912606400345F16 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				EF48C1C12912867E00345F16 /* Helper */,
 				EF48C19F291259E500345F16 /* Base Architecture */,
 				EF48C1AD2912606900345F16 /* Extensions */,
 			);
@@ -146,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				EF48C1AE2912607A00345F16 /* UITableView+.swift */,
+				EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */,
 				EF48C1B22912624800345F16 /* NSMutableAttributedString+.swift */,
 				EF48C1BE2912664000345F16 /* UIFont+.swift */,
 			);
@@ -166,8 +173,18 @@
 			isa = PBXGroup;
 			children = (
 				EF48C1A729125F7700345F16 /* BookTableViewCell.swift */,
+				EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		EF48C1C12912867E00345F16 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EF48C1B42912639800345F16 /* Formatter.swift */,
+				EF48C1C42912959A00345F16 /* LocalStorage.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		EFC865EA291253E90047247F = {
@@ -280,15 +297,18 @@
 				EF48C1AB2912604800345F16 /* Book.swift in Sources */,
 				EF48C1B32912624800345F16 /* NSMutableAttributedString+.swift in Sources */,
 				EFC865FB291253E90047247F /* BookListViewController.swift in Sources */,
+				EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */,
 				EFC865F7291253E90047247F /* AppDelegate.swift in Sources */,
 				EF48C1AF2912607A00345F16 /* UITableView+.swift in Sources */,
 				EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */,
 				EF48C1B52912639800345F16 /* Formatter.swift in Sources */,
 				EF48C1A829125F7700345F16 /* BookTableViewCell.swift in Sources */,
+				EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */,
 				EF48C1A629125D5000345F16 /* BookListDataSource.swift in Sources */,
-				EF48C1982912596900345F16 /* CreateBookViewController.swift in Sources */,
+				EF48C1982912596900345F16 /* AddBookViewController.swift in Sources */,
 				EF48C1B12912612600345F16 /* BaseTableViewCell.swift in Sources */,
 				EF48C1A1291259FA00345F16 /* BaseViewController.swift in Sources */,
+				EF48C1C329128A6900345F16 /* UINavigationBarAppearance+Appearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

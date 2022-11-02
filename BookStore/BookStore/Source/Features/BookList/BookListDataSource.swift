@@ -7,18 +7,32 @@
 
 import UIKit
 
-enum BookListSection: Hashable {
-    case list([Book])
+enum BookItem: Hashable {
+    case book(Book)
+    case empty
 }
 
-final class BookListDiffableDataSource: UITableViewDiffableDataSource<BookListSection, Book> {
+enum BookListSection: Hashable {
+    typealias Item = BookItem
+    case list([Item])
+    case empty
+}
+
+final class BookListDiffableDataSource: UITableViewDiffableDataSource<BookListSection, BookListSection.Item> {
 
     init(tableView: UITableView) {
 
         super.init(tableView: tableView) { tableView, indexPath, itemIdentifier in
-            let cell = tableView.dequeueReusableCell(BookTableViewCell.self, for: indexPath)
-            cell.configure(with: itemIdentifier)
-            return cell
+            switch itemIdentifier {
+            case .empty:
+                let cell = tableView.dequeueReusableCell(EmptyBookTableViewCell.self, for: indexPath)
+                return cell
+            case .book(let model):
+                let cell = tableView.dequeueReusableCell(BookTableViewCell.self, for: indexPath)
+                cell.configure(with: model)
+                return cell
+            }
+
         }
     }
 }
