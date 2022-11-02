@@ -24,6 +24,8 @@
 		EF48C1C329128A6900345F16 /* UINavigationBarAppearance+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */; };
 		EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C42912959A00345F16 /* LocalStorage.swift */; };
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
+		EF48C1D82912DBD000345F16 /* AddBookViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */; };
+		EF48C1DA2912DD9500345F16 /* MockLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
 		EFC865FB291253E90047247F /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865FA291253E90047247F /* BookListViewController.swift */; };
@@ -31,6 +33,16 @@
 		EFC86600291253EA0047247F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC865FF291253EA0047247F /* Assets.xcassets */; };
 		EFC86603291253EA0047247F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFC86601291253EA0047247F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF48C1D22912DBA000345F16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFC865EB291253E90047247F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFC865F2291253E90047247F;
+			remoteInfo = BookStore;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EF48C1972912596900345F16 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +61,9 @@
 		EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBarAppearance+Appearance.swift"; sourceTree = "<group>"; };
 		EF48C1C42912959A00345F16 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookTableViewCell.swift; sourceTree = "<group>"; };
+		EF48C1CE2912DBA000345F16 /* BookStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewControllerTests.swift; sourceTree = "<group>"; };
+		EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalStorage.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFC865F8291253E90047247F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EF48C1CB2912DBA000345F16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC865F0291253E90047247F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,10 +209,36 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		EF48C1CF2912DBA000345F16 /* BookStoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF48C1DC2912DD9F00345F16 /* Mock */,
+				EF48C1DB2912DD9700345F16 /* ViewController */,
+			);
+			path = BookStoreTests;
+			sourceTree = "<group>";
+		};
+		EF48C1DB2912DD9700345F16 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EF48C1DC2912DD9F00345F16 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		EFC865EA291253E90047247F = {
 			isa = PBXGroup;
 			children = (
 				EFC865F5291253E90047247F /* BookStore */,
+				EF48C1CF2912DBA000345F16 /* BookStoreTests */,
 				EFC865F4291253E90047247F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -199,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC865F3291253E90047247F /* BookStore.app */,
+				EF48C1CE2912DBA000345F16 /* BookStoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +265,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EF48C1CD2912DBA000345F16 /* BookStoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF48C1D42912DBA000345F16 /* Build configuration list for PBXNativeTarget "BookStoreTests" */;
+			buildPhases = (
+				EF48C1CA2912DBA000345F16 /* Sources */,
+				EF48C1CB2912DBA000345F16 /* Frameworks */,
+				EF48C1CC2912DBA000345F16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EF48C1D32912DBA000345F16 /* PBXTargetDependency */,
+			);
+			name = BookStoreTests;
+			productName = BookStoreTests;
+			productReference = EF48C1CE2912DBA000345F16 /* BookStoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EFC865F2291253E90047247F /* BookStore */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFC86607291253EA0047247F /* Build configuration list for PBXNativeTarget "BookStore" */;
@@ -246,6 +313,11 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					EF48C1CD2912DBA000345F16 = {
+						CreatedOnToolsVersion = 14.0.1;
+						LastSwiftMigration = 1400;
+						TestTargetID = EFC865F2291253E90047247F;
+					};
 					EFC865F2291253E90047247F = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -268,11 +340,19 @@
 			projectRoot = "";
 			targets = (
 				EFC865F2291253E90047247F /* BookStore */,
+				EF48C1CD2912DBA000345F16 /* BookStoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EF48C1CC2912DBA000345F16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC865F1291253E90047247F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,6 +369,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EF48C1CA2912DBA000345F16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF48C1D82912DBD000345F16 /* AddBookViewControllerTests.swift in Sources */,
+				EF48C1DA2912DD9500345F16 /* MockLocalStorage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFC865EF291253E90047247F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +403,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EF48C1D32912DBA000345F16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFC865F2291253E90047247F /* BookStore */;
+			targetProxy = EF48C1D22912DBA000345F16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EFC865FC291253E90047247F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +431,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EF48C1D52912DBA000345F16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woody.BookStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookStore";
+			};
+			name = Debug;
+		};
+		EF48C1D62912DBA000345F16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woody.BookStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BookStore";
+			};
+			name = Release;
+		};
 		EFC86605291253EA0047247F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -507,6 +651,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EF48C1D42912DBA000345F16 /* Build configuration list for PBXNativeTarget "BookStoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF48C1D52912DBA000345F16 /* Debug */,
+				EF48C1D62912DBA000345F16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFC865EE291253E90047247F /* Build configuration list for PBXProject "BookStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

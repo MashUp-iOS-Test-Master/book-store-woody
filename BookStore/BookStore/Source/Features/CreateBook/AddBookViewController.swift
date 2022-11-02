@@ -7,7 +7,16 @@
 
 import UIKit
 
-final class AddBookViewController: BaseViewController {
+protocol AddBookBusinessLogic {
+    func storeBook()
+    func categorySegmentControlValueChanged(_ segmentControl: UISegmentedControl)
+    
+    // MARK: 아래 로직들은 UI Component가 바뀌는 것인데 테스트가 필요할까?
+    func publishedAtDatePickerValueChanged(_ datePicker: UIDatePicker)
+    func priceTextFieldValueChanged(_ textField: UITextField)
+}
+
+final class AddBookViewController: BaseViewController, AddBookBusinessLogic {
 
     lazy var scrollView = UIScrollView()
     lazy var contentView = UIView()
@@ -23,6 +32,19 @@ final class AddBookViewController: BaseViewController {
 
     let categories: [Book.Category] = [.sosal, .tech, .economy, .poem]
     var selectedCategoryIndex: Int = 0
+
+    let localStorage: LocalStorage
+
+    init(localStorage: LocalStorage = UserDefaults.standard) {
+        self.localStorage = localStorage
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: UI
 
     override func setAttribute() {
         super.setAttribute()
@@ -102,6 +124,8 @@ final class AddBookViewController: BaseViewController {
         }
     }
 
+    // MARK: Business Logic
+    
     @objc func storeBook() {
         guard let name = bookNameTextField.text else { return }
         let category = categories[selectedCategoryIndex]
@@ -117,10 +141,6 @@ final class AddBookViewController: BaseViewController {
         }
     }
 
-    @objc func cancel() {
-        self.dismiss(animated: true)
-    }
-
     @objc func categorySegmentControlValueChanged(_ segmentControl: UISegmentedControl) {
         selectedCategoryIndex = segmentControl.selectedSegmentIndex
     }
@@ -130,10 +150,13 @@ final class AddBookViewController: BaseViewController {
     }
 
     @objc func priceTextFieldValueChanged(_ textField: UITextField) {
-
         guard let text = textField.text?.replacingOccurrences(of: ",", with: ""),
               let price = Formatter.amountFormatter.number(from: text) as? Int else { return }
         priceTextField.text = Formatter.amountFormatter.string(from: NSNumber(value: price))
+    }
+
+    @objc func cancel() {
+        self.dismiss(animated: true)
     }
 }
 
