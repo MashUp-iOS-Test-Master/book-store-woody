@@ -24,8 +24,6 @@
 		EF48C1C329128A6900345F16 /* UINavigationBarAppearance+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C229128A6900345F16 /* UINavigationBarAppearance+Appearance.swift */; };
 		EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C42912959A00345F16 /* LocalStorage.swift */; };
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
-		EF48C1D82912DBD000345F16 /* AddBookViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */; };
-		EF48C1DA2912DD9500345F16 /* MockLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */; };
 		EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
@@ -62,8 +60,6 @@
 		EF48C1C42912959A00345F16 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookTableViewCell.swift; sourceTree = "<group>"; };
 		EF48C1CE2912DBA000345F16 /* BookStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewControllerTests.swift; sourceTree = "<group>"; };
-		EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalStorage.swift; sourceTree = "<group>"; };
 		EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorage.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +124,7 @@
 		EF48C1A229125D3000345F16 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				EF48C1A429125D4200345F16 /* CreateBook */,
+				EF48C1A429125D4200345F16 /* AddBook */,
 				EF48C1A329125D3D00345F16 /* BookList */,
 			);
 			path = Features;
@@ -144,12 +140,12 @@
 			path = BookList;
 			sourceTree = "<group>";
 		};
-		EF48C1A429125D4200345F16 /* CreateBook */ = {
+		EF48C1A429125D4200345F16 /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
 				EF48C1972912596900345F16 /* AddBookViewController.swift */,
 			);
-			path = CreateBook;
+			path = AddBook;
 			sourceTree = "<group>";
 		};
 		EF48C1A92912604200345F16 /* Models */ = {
@@ -212,26 +208,8 @@
 		EF48C1CF2912DBA000345F16 /* BookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				EF48C1DC2912DD9F00345F16 /* Mock */,
-				EF48C1DB2912DD9700345F16 /* ViewController */,
 			);
 			path = BookStoreTests;
-			sourceTree = "<group>";
-		};
-		EF48C1DB2912DD9700345F16 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EF48C1D72912DBD000345F16 /* AddBookViewControllerTests.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EF48C1DC2912DD9F00345F16 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				EF48C1D92912DD9500345F16 /* MockLocalStorage.swift */,
-			);
-			path = Mock;
 			sourceTree = "<group>";
 		};
 		EF48C1DD2912E45800345F16 /* Manager */ = {
@@ -380,8 +358,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF48C1D82912DBD000345F16 /* AddBookViewControllerTests.swift in Sources */,
-				EF48C1DA2912DD9500345F16 /* MockLocalStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
