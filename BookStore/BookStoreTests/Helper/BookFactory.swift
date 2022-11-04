@@ -34,4 +34,22 @@ struct BookFactory {
             imageName: newBook.imageName
         )
     }
+
+    static func createNoNameBook() -> AddBookNewBookModel {
+        let newBook = Book(
+            name: "",
+            price: 10000,
+            publishedAt: "2022년 10월 2일",
+            category: .sosal,
+            imageName: "ic_empty"
+        )
+
+        return .init(
+            name: newBook.name,
+            category: newBook.category,
+            publishedAt: newBook.publishedAt,
+            price: Formatter.amountFormatter.string(from: NSNumber(value: newBook.price)),
+            imageName: newBook.imageName
+        )
+    }
 }

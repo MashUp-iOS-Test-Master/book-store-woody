@@ -36,7 +36,7 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
         name: String = .init(),
         category: Book.Category = .sosal,
         publishedAt: String = Formatter.dateFormatter.string(from: Date()),
-        price: String? = .init(),
+        price: String? = "0",
         bookLocalStorage: BookLocalStorage = BookLocalStorageImpl()
     ) {
         self.bookLocalStorage = bookLocalStorage
@@ -50,6 +50,7 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
 
     func addBook() -> Book? {
         guard name.isEmpty == false,
+              price?.isEmpty == false,
               let price = price,
               let price = getPrice(price) else { return nil }
 

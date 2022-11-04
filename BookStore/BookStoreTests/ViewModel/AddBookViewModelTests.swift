@@ -53,7 +53,7 @@ final class AddBookViewModelTests: XCTestCase {
         XCTAssertTrue(sut.bookLocalStorage.read()!.contains(newBook))
     }
 
-    func testAddBookViewModel_책생성을_실패합니다() {
+    func testAddBookViewModel_책생성을_디비쪽문제로_실패합니다() {
         // given
         sut = createAddBookViewModel(success: false)
 
@@ -61,6 +61,19 @@ final class AddBookViewModelTests: XCTestCase {
         let newBook = sut.addBook()
 
         // then
+        XCTAssertNil(newBook)
+    }
+
+    func testAddBookViewModel_이름이_비어있다면_책생성을_실패합니다() {
+        newBook = BookFactory.createNoNameBook()
+        sut = AddBookViewModel(
+            name: newBook.name,
+            category: newBook.category,
+            publishedAt: newBook.publishedAt,
+            price: newBook.price,
+            bookLocalStorage: bookLocalStorageSpy
+        )
+        let newBook = sut.addBook()
         XCTAssertNil(newBook)
     }
 
