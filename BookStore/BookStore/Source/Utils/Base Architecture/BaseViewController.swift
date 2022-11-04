@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Combine
 
 class BaseViewController: UIViewController {
+    var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +17,11 @@ class BaseViewController: UIViewController {
     }
 
     private func setup() {
+        bind()
         setAttribute()
         setLayout()
     }
+    func bind() {}
     func setAttribute() {}
     func setLayout() {}
 }

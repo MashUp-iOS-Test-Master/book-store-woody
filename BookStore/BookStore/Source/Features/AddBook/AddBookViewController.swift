@@ -7,37 +7,42 @@
 
 import UIKit
 
-protocol AddBookBusinessLogic {
-    func storeBook()
-    func categorySegmentControlValueChanged(_ segmentControl: UISegmentedControl)
-    
-    // MARK: 아래 로직들은 UI Component가 바뀌는 것인데 테스트가 필요할까?
-    func publishedAtDatePickerValueChanged(_ datePicker: UIDatePicker)
-    func priceTextFieldValueChanged(_ textField: UITextField)
-}
-
-final class AddBookViewController: BaseViewController, AddBookBusinessLogic {
+final class AddBookViewController: BaseViewController {
 
     lazy var scrollView = UIScrollView()
     lazy var contentView = UIView()
     lazy var bookNameTitleLabel = UILabel()
     lazy var bookNameTextField = UITextField()
     lazy var categoryTitleLabel = UILabel()
-    lazy var categorySegmentControl = UISegmentedControl(items: categories.map { $0.rawValue })
+    lazy var categorySegmentControl = UISegmentedControl(items: AddBookViewModel.categories.map { $0.rawValue })
     lazy var publishedAtTitleLabel = UILabel()
     lazy var publishedAtLabel = UILabel()
     lazy var publishedAtDatePicker = UIDatePicker()
     lazy var priceTitleLabel = UILabel()
     lazy var priceTextField = UITextField()
 
-    let categories: [Book.Category] = [.sosal, .tech, .economy, .poem]
-    var selectedCategoryIndex: Int = 0
+    let viewModel: AddBookBusinessLogic
 
-    let localStorage: LocalStorage
-
-    init(localStorage: LocalStorage = UserDefaults.standard) {
-        self.localStorage = localStorage
+    init(viewModel: AddBookBusinessLogic = AddBookViewModel()) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+    }
+
+    override func bind() {
+
+        viewModel.publishedAtPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] publishedAt in
+                self?.publishedAtLabel.text = publishedAt
+            }
+            .store(in: &cancellables)
+
+        viewModel.pricePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] price in
+                self?.priceTextField.text = price
+            }
+            .store(in: &cancellables)
     }
 
     required init?(coder: NSCoder) {
@@ -61,7 +66,6 @@ final class AddBookViewController: BaseViewController, AddBookBusinessLogic {
 
     override func setLayout() {
         super.setLayout()
-
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -125,34 +129,30 @@ final class AddBookViewController: BaseViewController, AddBookBusinessLogic {
     }
 
     // MARK: Business Logic
-    
-    @objc func storeBook() {
-        guard let name = bookNameTextField.text else { return }
-        let category = categories[selectedCategoryIndex]
-        guard let publishedAtDate = publishedAtLabel.text else { return }
-        guard let priceText = priceTextField.text?.replacingOccurrences(of: ",", with: ""),
-              let price = Formatter.amountFormatter.number(from: priceText) as? Int else { return }
-        let book = Book(name: name, price: price, publishedAt: publishedAtDate, category: category, imageName: "ic_empty")
 
-        let currentBook = UserDefaults.standard.read(key: .books, type: [Book].self) ?? []
-        let success = UserDefaults.standard.store(data: currentBook + [book], key: .books)
-        if success {
-            self.dismiss(animated: true)
-        }
+    @objc func bookNameValueChanged(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        viewModel.updateBookName(to: text)
     }
 
     @objc func categorySegmentControlValueChanged(_ segmentControl: UISegmentedControl) {
-        selectedCategoryIndex = segmentControl.selectedSegmentIndex
+        viewModel.updateCategory(selectedIndex: segmentControl.selectedSegmentIndex)
     }
 
     @objc func publishedAtDatePickerValueChanged(_ datePicker: UIDatePicker) {
-        publishedAtLabel.text = Formatter.dateFormatter.string(from: datePicker.date)
+        viewModel.updatePublishedAt(selectedDate: datePicker.date)
     }
 
     @objc func priceTextFieldValueChanged(_ textField: UITextField) {
-        guard let text = textField.text?.replacingOccurrences(of: ",", with: ""),
-              let price = Formatter.amountFormatter.number(from: text) as? Int else { return }
-        priceTextField.text = Formatter.amountFormatter.string(from: NSNumber(value: price))
+        guard let text = textField.text else { return }
+        viewModel.updatePrice(to: text)
+    }
+
+    @objc func storeBook() {
+        let addBookResult = viewModel.addBook()
+        if addBookResult != nil {
+            self.dismiss(animated: true)
+        }
     }
 
     @objc func cancel() {
@@ -206,10 +206,11 @@ extension AddBookViewController {
         bookNameTextField.borderStyle = .roundedRect
         bookNameTextField.autocorrectionType = .no
         bookNameTextField.autocapitalizationType = .none
+        bookNameTextField.addTarget(self, action: #selector(bookNameValueChanged), for: .editingChanged)
     }
 
     private func setCategorySegmetControl() {
-        categorySegmentControl.selectedSegmentIndex = selectedCategoryIndex
+        categorySegmentControl.selectedSegmentIndex = 0
         categorySegmentControl.backgroundColor = .blue.withAlphaComponent(0.2)
         categorySegmentControl.addTarget(self, action: #selector(categorySegmentControlValueChanged), for: .valueChanged)
     }

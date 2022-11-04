@@ -188,7 +188,7 @@ extension BookListViewController: UITableViewDelegate {
 
         let delete = UIContextualAction(style: .normal, title: "삭제") { [weak self] action, view, success in
 
-            guard let result = self?.bookLocalStorage.remove(data: model) else { fatalError() }
+            guard let result = self?.bookLocalStorage.remove(model) else { fatalError() }
             success(result)
             self?.requestBookList()
         }
