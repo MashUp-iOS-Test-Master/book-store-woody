@@ -17,10 +17,11 @@ class BaseViewController: UIViewController {
     }
 
     private func setup() {
-        bind()
         setAttribute()
         setLayout()
+        bind()
     }
+    
     func bind() {}
     func setAttribute() {}
     func setLayout() {}

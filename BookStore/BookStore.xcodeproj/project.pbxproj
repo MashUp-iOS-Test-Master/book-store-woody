@@ -26,6 +26,7 @@
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
 		EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */; };
 		EF7994032914B24200FDD5BC /* BookFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994022914B24200FDD5BC /* BookFactory.swift */; };
+		EF7994092914F3AC00FDD5BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
 		EFC865FB291253E90047247F /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865FA291253E90047247F /* BookListViewController.swift */; };
@@ -66,6 +67,7 @@
 		EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBookTableViewCell.swift; sourceTree = "<group>"; };
 		EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorage.swift; sourceTree = "<group>"; };
 		EF7994022914B24200FDD5BC /* BookFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFactory.swift; sourceTree = "<group>"; };
+		EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFC865F8291253E90047247F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				EF48C1C0291268D600345F16 /* Cell */,
 				EFC865FA291253E90047247F /* BookListViewController.swift */,
+				EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */,
 				EF48C1A529125D5000345F16 /* BookListDataSource.swift */,
 			);
 			path = BookList;
@@ -406,6 +409,7 @@
 				EF48C1AF2912607A00345F16 /* UITableView+.swift in Sources */,
 				EFE4873E2913DE59007B5840 /* AddBookViewModel.swift in Sources */,
 				EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */,
+				EF7994092914F3AC00FDD5BC /* BookListViewModel.swift in Sources */,
 				EF48C1B52912639800345F16 /* Formatter.swift in Sources */,
 				EF48C1A829125F7700345F16 /* BookTableViewCell.swift in Sources */,
 				EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */,

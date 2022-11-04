@@ -6,5 +6,8 @@
 //
 
 import Foundation
+import Combine
 
-class BaseViewModel {}
+class BaseViewModel {
+    var cancellables: Set<AnyCancellable> = []
+}
