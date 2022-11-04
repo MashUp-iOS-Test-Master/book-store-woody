@@ -21,8 +21,10 @@ class BaseViewController: UIViewController {
         setLayout()
         bind()
     }
-    
-    func bind() {}
-    func setAttribute() {}
+
+    func setAttribute() {
+        view.backgroundColor = .white
+    }
     func setLayout() {}
+    func bind() {}
 }

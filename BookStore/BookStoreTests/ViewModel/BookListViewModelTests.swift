@@ -60,4 +60,23 @@ final class BookListViewModelTests: XCTestCase {
         // then
         XCTAssertEqual(totalPrice, sut.totalPrice) // 책목록에 따라 책 가격의 총 합계을 계산하는 로직에 대한 테스트
     }
+
+    func testBookListViewModel_책목록중_책하나를_선택합니다() {
+        // given
+        sut = BookListViewModel()
+        let category: Book.Category = .tech
+        let selectCategoryExpectation = XCTestExpectation(description: "책 하나 선택하기")
+
+        // when
+        // then
+        sut.selectedCategoryPublisher
+            .compactMap { $0 }
+            .sink { cat in
+                selectCategoryExpectation.fulfill()
+                XCTAssertEqual(category, cat)
+            }
+            .store(in: &cancellables)
+
+        sut.selectCell(category: category)
+    }
 }

@@ -29,6 +29,9 @@ final class BookTableViewCell: BaseTableViewCell<Book> {
     override func setAttribute() {
         super.setAttribute()
 
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        
         bookDetailStackView.axis = .vertical
         bookDetailStackView.alignment = .leading
         bookDetailStackView.distribution = .fill
