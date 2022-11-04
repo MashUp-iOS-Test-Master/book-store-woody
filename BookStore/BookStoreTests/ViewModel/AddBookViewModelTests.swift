@@ -90,7 +90,14 @@ final class AddBookViewModelTests: XCTestCase {
     }
 
     func testAddBookViewModel_가격을_수정합니다() {
+        // given
+        let priceString = "12,000"
 
+        // when
+        sut.updatePrice(to: priceString)
+
+        // then
+        XCTAssertEqual(sut.getBookPrice(), priceString)
     }
 
     private func createAddBookViewModel(success: Bool) -> AddBookViewModel {
