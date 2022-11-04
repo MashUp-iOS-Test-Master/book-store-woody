@@ -10,7 +10,7 @@ import Combine
 
 protocol AddBookBusinessLogic {
     var publishedAtPublisher: Published<String>.Publisher { get }
-    var pricePublisher: Published<String?>.Publisher { get }
+    var pricePublisher: Published<Int>.Publisher { get }
 
     func updateBookName(to name: String)
     func updateCategory(selectedIndex: Int)
@@ -25,10 +25,10 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
     private var name: String
     private var category: Book.Category
     @Published var publishedAt: String
-    @Published var price: String?
+    @Published var price: Int
 
     var publishedAtPublisher: Published<String>.Publisher { $publishedAt }
-    var pricePublisher: Published<String?>.Publisher { $price }
+    var pricePublisher: Published<Int>.Publisher { $price }
 
     let bookLocalStorage: BookLocalStorage
 
@@ -36,7 +36,7 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
         name: String = .init(),
         category: Book.Category = .sosal,
         publishedAt: String = Formatter.dateFormatter.string(from: Date()),
-        price: String? = "0",
+        price: Int = 0,
         bookLocalStorage: BookLocalStorage = BookLocalStorageImpl()
     ) {
         self.bookLocalStorage = bookLocalStorage
@@ -49,10 +49,7 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
     // MARK: - 비즈니스 로직
 
     func addBook() -> Book? {
-        guard name.isEmpty == false,
-              price?.isEmpty == false,
-              let price = price,
-              let price = getPrice(price) else { return nil }
+        guard name.isEmpty == false else { return nil }
 
         let newBook = Book(
             name: name,
@@ -68,9 +65,9 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
         return nil
     }
 
-    private func getPrice(_ price: String) -> Int? {
+    private func getPrice(_ price: String) -> Int {
         let convertedPrice = price.replacingOccurrences(of: ",", with: "")
-        return Formatter.amountFormatter.number(from: convertedPrice) as? Int
+        return Formatter.amountFormatter.number(from: convertedPrice) as? Int ?? 0
     }
 
     func updateBookName(to name: String) {
@@ -86,10 +83,8 @@ final class AddBookViewModel: BaseViewModel, AddBookBusinessLogic {
     }
 
     func updatePrice(to price: String) {
-        guard let price = getPrice(price) else {
-            return
-        }
-        self.price = Formatter.amountFormatter.string(from: NSNumber(value: price))
+        let price = getPrice(price)
+        self.price = price
     }
 }
 
@@ -99,7 +94,7 @@ extension AddBookViewModel {
         name
     }
 
-    func getBookPrice() -> String? {
+    func getBookPrice() -> Int {
         price
     }
 

@@ -8,48 +8,35 @@
 import Foundation
 @testable import BookStore
 
-struct AddBookNewBookModel {
-    var name: String
-    var category: Book.Category
-    var publishedAt: String
-    var price: String?
-    var imageName: String
-}
-
 struct BookFactory {
-    static func createNewBook() -> AddBookNewBookModel {
-        let newBook = Book(
+    static func createEmptyBookList() -> [Book] {
+        return []
+    }
+
+    static func createBookList() -> [Book] {
+        return [
+            Book(name: "새로운 책", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty"),
+            Book(name: "새로운 책", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty")
+        ]
+    }
+
+    static func createBook() -> Book {
+        return Book(
             name: "새로운 책",
             price: 10000,
             publishedAt: "2022년 10월 2일",
             category: .sosal,
             imageName: "ic_empty"
         )
-
-        return .init(
-            name: newBook.name,
-            category: newBook.category,
-            publishedAt: newBook.publishedAt,
-            price: Formatter.amountFormatter.string(from: NSNumber(value: newBook.price)),
-            imageName: newBook.imageName
-        )
     }
 
-    static func createNoNameBook() -> AddBookNewBookModel {
-        let newBook = Book(
+    static func createNoNameBook() -> Book {
+        return Book(
             name: "",
             price: 10000,
             publishedAt: "2022년 10월 2일",
             category: .sosal,
             imageName: "ic_empty"
-        )
-
-        return .init(
-            name: newBook.name,
-            category: newBook.category,
-            publishedAt: newBook.publishedAt,
-            price: Formatter.amountFormatter.string(from: NSNumber(value: newBook.price)),
-            imageName: newBook.imageName
         )
     }
 }

@@ -41,7 +41,6 @@ final class BookListViewController: BaseViewController {
         viewModel.bookListPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] bookList in
-                print(bookList)
                 guard let self = self else { return }
                 let sections: [BookListSection] = bookList.isEmpty ? [.empty] : [.list(bookList.map { .book($0) })]
                 self.applySnapShot(section: sections)

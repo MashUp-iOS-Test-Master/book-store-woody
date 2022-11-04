@@ -38,15 +38,14 @@ final class BookListViewModel: BaseViewModel, BookListBusinessLogic {
         $bookList
             .sink { [weak self] books in
                 guard let self = self else { return }
-                self.totalPrice = self.calculateTotalPrice(books: books)
+                self.totalPrice = self.calculateTotalPrice(bookList: books)
             }
             .store(in: &cancellables)
     }
 
     func requestBookList() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            let bookList = self?.bookLocalStorage.read() ?? []
-            self?.bookList = bookList
+        bookLocalStorage.read { [weak self] bookList in
+            self?.bookList = bookList ?? []
         }
     }
 
@@ -54,8 +53,8 @@ final class BookListViewModel: BaseViewModel, BookListBusinessLogic {
         return bookLocalStorage.remove(book)
     }
 
-    func calculateTotalPrice(books: [Book]) -> Int {
-        books.reduce(0) { partialResult, book in
+    private func calculateTotalPrice(bookList: [Book]) -> Int {
+        bookList.reduce(0) { partialResult, book in
             return partialResult + book.price
         }
     }

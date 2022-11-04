@@ -9,7 +9,7 @@ import Foundation
 
 protocol BookLocalStorage {
     func store(_ book: Book) -> Bool
-    func read() -> [Book]?
+    func read(completion: @escaping ([Book]?) -> Void)
     func remove(_ book: Book) -> Bool
 }
 
@@ -27,13 +27,16 @@ final class BookLocalStorageImpl: BookLocalStorage {
         return localStorage.store(data: currentBooks + [book], key: key)
     }
 
-    func read() -> [Book]? {
-        localStorage.read(key: key, type: [Book].self)
+    func read(completion: @escaping ([Book]?) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            guard let self = self else { return }
+            completion(self.localStorage.read(key: self.key, type: [Book].self))
+        }
     }
 
     func remove(_ book: Book) -> Bool {
-        guard var current = self.read() else { return false }
-
+        guard var current = self.localStorage.read(key: key, type: [Book].self) else { return false }
+        
         if let firstIndex = current.firstIndex(of: book) {
             current.remove(at: firstIndex)
             return self.storeBooks(current)

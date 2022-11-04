@@ -40,7 +40,10 @@ final class AddBookViewController: BaseViewController {
         viewModel.pricePublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] price in
-                self?.priceTextField.text = price
+                if let price = Formatter.amountFormatter.string(from: NSNumber(value: price)) {
+                    self?.priceTextField.text = price
+                }
+
             }
             .store(in: &cancellables)
     }
