@@ -25,6 +25,8 @@
 		EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C42912959A00345F16 /* LocalStorage.swift */; };
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
 		EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */; };
+		EF6AFCD429164B57007CFA49 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = EF6AFCD329164B57007CFA49 /* Nimble */; };
+		EF6AFCD729164B75007CFA49 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = EF6AFCD629164B75007CFA49 /* Quick */; };
 		EF7994092914F3AC00FDD5BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */; };
 		EF79940F2914FE9400FDD5BC /* BookListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79940E2914FE9400FDD5BC /* BookListViewModelTests.swift */; };
 		EF7994112914FECD00FDD5BC /* BookFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994102914FECD00FDD5BC /* BookFactory.swift */; };
@@ -93,7 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6AFCD729164B75007CFA49 /* Quick in Frameworks */,
 				EF48C19C291259B500345F16 /* SnapKit in Frameworks */,
+				EF6AFCD429164B57007CFA49 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +238,15 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		EF6AFCD829164BA6007CFA49 /* XCTest */ = {
+			isa = PBXGroup;
+			children = (
+				EFB7023629154B8E0035B3DA /* Manager */,
+				EFE487422913EFEE007B5840 /* ViewModel */,
+			);
+			path = XCTest;
+			sourceTree = "<group>";
+		};
 		EF7994012914B23900FDD5BC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,10 +294,9 @@
 		EFE487352913DE3A007B5840 /* BookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				EFB7023629154B8E0035B3DA /* Manager */,
 				EF7994012914B23900FDD5BC /* Helper */,
-				EFE487422913EFEE007B5840 /* ViewModel */,
 				EFE487412913EFE9007B5840 /* Mock */,
+				EF6AFCD829164BA6007CFA49 /* XCTest */,
 			);
 			path = BookStoreTests;
 			sourceTree = "<group>";
@@ -325,6 +337,8 @@
 			name = BookStore;
 			packageProductDependencies = (
 				EF48C19B291259B500345F16 /* SnapKit */,
+				EF6AFCD329164B57007CFA49 /* Nimble */,
+				EF6AFCD629164B75007CFA49 /* Quick */,
 			);
 			productName = BookStore;
 			productReference = EFC865F3291253E90047247F /* BookStore.app */;
@@ -379,6 +393,8 @@
 			mainGroup = EFC865EA291253E90047247F;
 			packageReferences = (
 				EF48C19A291259B500345F16 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */,
+				EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */,
 			);
 			productRefGroup = EFC865F4291253E90047247F /* Products */;
 			projectDirPath = "";
@@ -735,6 +751,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -742,6 +774,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF48C19A291259B500345F16 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		EF6AFCD329164B57007CFA49 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+		EF6AFCD629164B75007CFA49 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
