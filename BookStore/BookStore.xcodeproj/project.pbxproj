@@ -28,6 +28,8 @@
 		EF7994092914F3AC00FDD5BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */; };
 		EF79940F2914FE9400FDD5BC /* BookListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79940E2914FE9400FDD5BC /* BookListViewModelTests.swift */; };
 		EF7994112914FECD00FDD5BC /* BookFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994102914FECD00FDD5BC /* BookFactory.swift */; };
+		EFB7023829154BA70035B3DA /* BookLocalStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7023729154BA70035B3DA /* BookLocalStorageTests.swift */; };
+		EFB7023A29154BD80035B3DA /* SpyLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7023929154BD80035B3DA /* SpyLocalStorage.swift */; };
 		EFC865F7291253E90047247F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F6291253E90047247F /* AppDelegate.swift */; };
 		EFC865F9291253E90047247F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865F8291253E90047247F /* SceneDelegate.swift */; };
 		EFC865FB291253E90047247F /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC865FA291253E90047247F /* BookListViewController.swift */; };
@@ -70,6 +72,8 @@
 		EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		EF79940E2914FE9400FDD5BC /* BookListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModelTests.swift; sourceTree = "<group>"; };
 		EF7994102914FECD00FDD5BC /* BookFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFactory.swift; sourceTree = "<group>"; };
+		EFB7023729154BA70035B3DA /* BookLocalStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorageTests.swift; sourceTree = "<group>"; };
+		EFB7023929154BD80035B3DA /* SpyLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyLocalStorage.swift; sourceTree = "<group>"; };
 		EFC865F3291253E90047247F /* BookStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFC865F6291253E90047247F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFC865F8291253E90047247F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +242,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		EFB7023629154B8E0035B3DA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EFB7023729154BA70035B3DA /* BookLocalStorageTests.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		EFC865EA291253E90047247F = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +281,7 @@
 		EFE487352913DE3A007B5840 /* BookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				EFB7023629154B8E0035B3DA /* Manager */,
 				EF7994012914B23900FDD5BC /* Helper */,
 				EFE487422913EFEE007B5840 /* ViewModel */,
 				EFE487412913EFE9007B5840 /* Mock */,
@@ -280,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE487452913F04B007B5840 /* MockBookLocalStorage.swift */,
+				EFB7023929154BD80035B3DA /* SpyLocalStorage.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -431,7 +445,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE487462913F04B007B5840 /* MockBookLocalStorage.swift in Sources */,
+				EFB7023A29154BD80035B3DA /* SpyLocalStorage.swift in Sources */,
 				EF79940F2914FE9400FDD5BC /* BookListViewModelTests.swift in Sources */,
+				EFB7023829154BA70035B3DA /* BookLocalStorageTests.swift in Sources */,
 				EFE487442913F003007B5840 /* AddBookViewModelTests.swift in Sources */,
 				EF7994112914FECD00FDD5BC /* BookFactory.swift in Sources */,
 			);
