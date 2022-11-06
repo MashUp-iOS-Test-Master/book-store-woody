@@ -189,7 +189,7 @@ extension BookListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard let itemIdentifier = bookListDataSource.itemIdentifier(for: indexPath),
-                case .book(let model) = itemIdentifier
+              case .book(let model) = itemIdentifier
         else { return }
 
         viewModel.selectCell(category: model.category)

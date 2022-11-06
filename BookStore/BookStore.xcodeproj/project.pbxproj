@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF25628B29178CA500428B40 /* BookLocalStorageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */; };
+		EF25628E29178EB700428B40 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = EF25628D29178EB700428B40 /* Quick */; };
+		EF25629129178EC800428B40 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = EF25629029178EC800428B40 /* Nimble */; };
 		EF48C1982912596900345F16 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1972912596900345F16 /* AddBookViewController.swift */; };
 		EF48C19C291259B500345F16 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EF48C19B291259B500345F16 /* SnapKit */; };
 		EF48C1A1291259FA00345F16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1A0291259FA00345F16 /* BaseViewController.swift */; };
@@ -25,8 +28,6 @@
 		EF48C1C52912959A00345F16 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C42912959A00345F16 /* LocalStorage.swift */; };
 		EF48C1C72912970E00345F16 /* EmptyBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1C62912970E00345F16 /* EmptyBookTableViewCell.swift */; };
 		EF48C1DF2912E46200345F16 /* BookLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1DE2912E46200345F16 /* BookLocalStorage.swift */; };
-		EF6AFCD429164B57007CFA49 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = EF6AFCD329164B57007CFA49 /* Nimble */; };
-		EF6AFCD729164B75007CFA49 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = EF6AFCD629164B75007CFA49 /* Quick */; };
 		EF7994092914F3AC00FDD5BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994082914F3AC00FDD5BC /* BookListViewModel.swift */; };
 		EF79940F2914FE9400FDD5BC /* BookListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF79940E2914FE9400FDD5BC /* BookListViewModelTests.swift */; };
 		EF7994112914FECD00FDD5BC /* BookFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7994102914FECD00FDD5BC /* BookFactory.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorageSpec.swift; sourceTree = "<group>"; };
 		EF48C1972912596900345F16 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		EF48C1A0291259FA00345F16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EF48C1A529125D5000345F16 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
@@ -95,9 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF6AFCD729164B75007CFA49 /* Quick in Frameworks */,
 				EF48C19C291259B500345F16 /* SnapKit in Frameworks */,
-				EF6AFCD429164B57007CFA49 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,12 +105,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF25628E29178EB700428B40 /* Quick in Frameworks */,
+				EF25629129178EC800428B40 /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF2562882917897B00428B40 /* QuickNimble */ = {
+			isa = PBXGroup;
+			children = (
+				EF25628929178C8400428B40 /* Manager */,
+			);
+			path = QuickNimble;
+			sourceTree = "<group>";
+		};
+		EF25628929178C8400428B40 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		EF48C193291257AB00345F16 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +312,7 @@
 		EFE487352913DE3A007B5840 /* BookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				EF2562882917897B00428B40 /* QuickNimble */,
 				EF7994012914B23900FDD5BC /* Helper */,
 				EFE487412913EFE9007B5840 /* Mock */,
 				EF6AFCD829164BA6007CFA49 /* XCTest */,
@@ -337,8 +356,6 @@
 			name = BookStore;
 			packageProductDependencies = (
 				EF48C19B291259B500345F16 /* SnapKit */,
-				EF6AFCD329164B57007CFA49 /* Nimble */,
-				EF6AFCD629164B75007CFA49 /* Quick */,
 			);
 			productName = BookStore;
 			productReference = EFC865F3291253E90047247F /* BookStore.app */;
@@ -358,6 +375,10 @@
 				EFE487392913DE3A007B5840 /* PBXTargetDependency */,
 			);
 			name = BookStoreTests;
+			packageProductDependencies = (
+				EF25628D29178EB700428B40 /* Quick */,
+				EF25629029178EC800428B40 /* Nimble */,
+			);
 			productName = BookStoreTests;
 			productReference = EFE487342913DE3A007B5840 /* BookStoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -393,8 +414,8 @@
 			mainGroup = EFC865EA291253E90047247F;
 			packageReferences = (
 				EF48C19A291259B500345F16 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */,
-				EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */,
+				EF25628C29178EB700428B40 /* XCRemoteSwiftPackageReference "Quick" */,
+				EF25628F29178EC800428B40 /* XCRemoteSwiftPackageReference "Nimble" */,
 			);
 			productRefGroup = EFC865F4291253E90047247F /* Products */;
 			projectDirPath = "";
@@ -462,6 +483,7 @@
 			files = (
 				EFE487462913F04B007B5840 /* MockBookLocalStorage.swift in Sources */,
 				EFB7023A29154BD80035B3DA /* SpyLocalStorage.swift in Sources */,
+				EF25628B29178CA500428B40 /* BookLocalStorageSpec.swift in Sources */,
 				EF79940F2914FE9400FDD5BC /* BookListViewModelTests.swift in Sources */,
 				EFB7023829154BA70035B3DA /* BookLocalStorageTests.swift in Sources */,
 				EFE487442913F003007B5840 /* AddBookViewModelTests.swift in Sources */,
@@ -743,6 +765,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EF25628C29178EB700428B40 /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		EF25628F29178EC800428B40 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		EF48C19A291259B500345F16 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -751,39 +789,23 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Nimble.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Quick/Quick.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EF25628D29178EB700428B40 /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF25628C29178EB700428B40 /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		EF25629029178EC800428B40 /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF25628F29178EC800428B40 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
 		EF48C19B291259B500345F16 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EF48C19A291259B500345F16 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		EF6AFCD329164B57007CFA49 /* Nimble */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EF6AFCD229164B57007CFA49 /* XCRemoteSwiftPackageReference "Nimble" */;
-			productName = Nimble;
-		};
-		EF6AFCD629164B75007CFA49 /* Quick */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EF6AFCD529164B75007CFA49 /* XCRemoteSwiftPackageReference "Quick" */;
-			productName = Quick;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
