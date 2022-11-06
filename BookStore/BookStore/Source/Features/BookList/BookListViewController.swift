@@ -59,6 +59,14 @@ final class BookListViewController: BaseViewController {
                 }
             }
             .store(in: &cancellables)
+
+        viewModel.selectedCategoryPublisher
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] category in
+                self?.executeSelectAction(category)
+            }
+            .store(in: &cancellables)
     }
 
     override func setAttribute() {
@@ -144,6 +152,7 @@ extension BookListViewController {
         bookListTableView.register(EmptyBookTableViewCell.self)
         bookListTableView.separatorStyle = .singleLine
         bookListTableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        bookListTableView.backgroundColor = .clear
     }
 
     private func setNavigationBar() {
@@ -178,6 +187,37 @@ extension BookListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let itemIdentifier = bookListDataSource.itemIdentifier(for: indexPath),
+                case .book(let model) = itemIdentifier
+        else { return }
+
+        viewModel.selectCell(category: model.category)
+    }
+
+    private func executeSelectAction(_ category: Book.Category) {
+        switch category {
+        case .economy:
+            break
+        case .poem:
+            let alertController = UIAlertController(
+                title: nil,
+                message: "으악! 🧟‍♂️🧟‍♂️🧟‍♂️",
+                preferredStyle: .alert
+            )
+            present(alertController, animated: true)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.dismiss(animated: true)
+            }
+        case .sosal:
+            break
+        case .tech:
+            view.backgroundColor = .red
+            UIView.animate(withDuration: 1.0, delay: 0, animations: {
+                self.view.backgroundColor = .white
+            })
+        }
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

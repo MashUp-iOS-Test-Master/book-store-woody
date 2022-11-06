@@ -9,29 +9,40 @@ import Foundation
 import Combine
 
 protocol BookListBusinessLogic {
+    typealias Category = Book.Category
+
     var bookListPublisher: Published<[Book]>.Publisher { get }
     var totalPricePublisher: Published<Int>.Publisher { get }
+    var selectedCategoryPublisher: Published<Category?>.Publisher { get }
 
     func requestBookList()
     func removeBook(book: Book) -> Bool
+    func selectCell(category: Category)
 }
 
 final class BookListViewModel: BaseViewModel, BookListBusinessLogic {
+
+    typealias Category = Book.Category
+
     let bookLocalStorage: BookLocalStorage
 
     @Published var bookList: [Book]
     @Published var totalPrice: Int
+    @Published var selectedCategory: Category?
 
     var bookListPublisher: Published<[Book]>.Publisher { $bookList }
     var totalPricePublisher: Published<Int>.Publisher { $totalPrice }
+    var selectedCategoryPublisher: Published<Category?>.Publisher { $selectedCategory }
 
     init(
         bookList: [Book] = [],
         totalPrice: Int = 0,
+        selectedCategory: Category? = nil,
         bookLocalStorage: BookLocalStorage = BookLocalStorageImpl()
     ) {
         self.bookList = bookList
         self.totalPrice = totalPrice
+        self.selectedCategory = selectedCategory
         self.bookLocalStorage = bookLocalStorage
         super.init()
 
@@ -57,5 +68,9 @@ final class BookListViewModel: BaseViewModel, BookListBusinessLogic {
         bookList.reduce(0) { partialResult, book in
             return partialResult + book.price
         }
+    }
+
+    func selectCell(category: Category) {
+        self.selectedCategory = category
     }
 }
