@@ -15,14 +15,14 @@ struct BookFactory {
 
     static func createBookList() -> [Book] {
         return [
-            Book(name: "새로운 책", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty"),
-            Book(name: "새로운 책", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty")
+            Book(name: "새로운 책1", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty"),
+            Book(name: "새로운 책2", price: 10000, publishedAt: "2022년 10월 2일", category: .sosal, imageName: "ic_empty")
         ]
     }
 
     static func createBook() -> Book {
         return Book(
-            name: "새로운 책",
+            name: "새로운 책 3",
             price: 10000,
             publishedAt: "2022년 10월 2일",
             category: .sosal,

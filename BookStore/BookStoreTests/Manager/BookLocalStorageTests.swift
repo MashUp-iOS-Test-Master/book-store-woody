@@ -29,12 +29,13 @@ final class BookLocalStorageTests: XCTestCase {
     func testBookLocalStorage_책을_저장합니다() {
         // given
         let newBook = BookFactory.createBook()
-
+        
         // when
         let result = sut.store(newBook)
 
         // then
         XCTAssertTrue(result)
+        XCTAssertEqual(spyLocalStorage.storeCallCount, 1)
     }
 
     func testBookLocalStorage_책목록을_불러옵니다() {
@@ -53,7 +54,7 @@ final class BookLocalStorageTests: XCTestCase {
         wait(for: [readExpectation], timeout: 1.1)
     }
 
-    func testBookLocalStorage_책을_목록에서_제거합니다() {
+    func testBookLocalStorage_책을_목록에서_제거_성공합니다() {
         // given
         let book = BookFactory.createBook()
         let bookList = BookFactory.createBookList()
@@ -64,6 +65,9 @@ final class BookLocalStorageTests: XCTestCase {
 
         // then
         XCTAssertTrue(result)
+        print(bookList)
+        print(book)
+        XCTAssertEqual(spyLocalStorage.bookList, bookList)
     }
 
     func testBookLocalStorage_책목록에서_제거할_책이_없어서_제거_실패합니다() {
@@ -76,5 +80,6 @@ final class BookLocalStorageTests: XCTestCase {
 
         // then
         XCTAssertFalse(result)
+        XCTAssertEqual(spyLocalStorage.bookList, [])
     }
 }
