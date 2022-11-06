@@ -10,6 +10,8 @@
 		EF25628B29178CA500428B40 /* BookLocalStorageSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */; };
 		EF25628E29178EB700428B40 /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = EF25628D29178EB700428B40 /* Quick */; };
 		EF25629129178EC800428B40 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = EF25629029178EC800428B40 /* Nimble */; };
+		EF2562942917A56B00428B40 /* AddBookViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2562932917A56B00428B40 /* AddBookViewModelSpec.swift */; };
+		EF2562962917A79400428B40 /* BookListViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2562952917A79400428B40 /* BookListViewModelSpec.swift */; };
 		EF48C1982912596900345F16 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1972912596900345F16 /* AddBookViewController.swift */; };
 		EF48C19C291259B500345F16 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EF48C19B291259B500345F16 /* SnapKit */; };
 		EF48C1A1291259FA00345F16 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C1A0291259FA00345F16 /* BaseViewController.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLocalStorageSpec.swift; sourceTree = "<group>"; };
+		EF2562932917A56B00428B40 /* AddBookViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModelSpec.swift; sourceTree = "<group>"; };
+		EF2562952917A79400428B40 /* BookListViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModelSpec.swift; sourceTree = "<group>"; };
 		EF48C1972912596900345F16 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		EF48C1A0291259FA00345F16 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EF48C1A529125D5000345F16 /* BookListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDataSource.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		EF2562882917897B00428B40 /* QuickNimble */ = {
 			isa = PBXGroup;
 			children = (
+				EF2562922917A55600428B40 /* ViewModel */,
 				EF25628929178C8400428B40 /* Manager */,
 			);
 			path = QuickNimble;
@@ -127,6 +132,15 @@
 				EF25628A29178CA500428B40 /* BookLocalStorageSpec.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		EF2562922917A55600428B40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF2562932917A56B00428B40 /* AddBookViewModelSpec.swift */,
+				EF2562952917A79400428B40 /* BookListViewModelSpec.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EF48C193291257AB00345F16 /* Resource */ = {
@@ -312,10 +326,10 @@
 		EFE487352913DE3A007B5840 /* BookStoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				EF6AFCD829164BA6007CFA49 /* XCTest */,
 				EF2562882917897B00428B40 /* QuickNimble */,
 				EF7994012914B23900FDD5BC /* Helper */,
 				EFE487412913EFE9007B5840 /* Mock */,
-				EF6AFCD829164BA6007CFA49 /* XCTest */,
 			);
 			path = BookStoreTests;
 			sourceTree = "<group>";
@@ -481,6 +495,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2562942917A56B00428B40 /* AddBookViewModelSpec.swift in Sources */,
+				EF2562962917A79400428B40 /* BookListViewModelSpec.swift in Sources */,
 				EFE487462913F04B007B5840 /* MockBookLocalStorage.swift in Sources */,
 				EFB7023A29154BD80035B3DA /* SpyLocalStorage.swift in Sources */,
 				EF25628B29178CA500428B40 /* BookLocalStorageSpec.swift in Sources */,

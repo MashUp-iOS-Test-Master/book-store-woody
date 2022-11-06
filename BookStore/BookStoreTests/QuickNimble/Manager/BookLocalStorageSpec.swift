@@ -39,17 +39,32 @@ final class BookLocalStorageSpec: QuickSpec {
                 beforeEach {
                     bookList = BookFactory.createBookList()
                 }
+                // MARK: 방법 1 : waitUntil
                 context("여러 책을 저장한 상황 ") {
                     beforeEach {
                         spyLocalStorage.bookList = bookList
                     }
                     it("여러 책을 불러옵니다.") {
+
                         await waitUntil(timeout: .seconds(2)) { done in
                             bookStorage.read { books in
                                 expect(books).to(equal(bookList))
                                 done()
                             }
                         }
+                    }
+                }
+                // MARK: 방법 2 : toEventually
+                context("여러 책을 저장한 상황 ") {
+                    beforeEach {
+                        spyLocalStorage.bookList = bookList
+                    }
+                    it("여러 책을 불러옵니다.") {
+                        var books: [Book] = []
+                        bookStorage.read { booksParam in
+                            books = booksParam!
+                        }
+                        expect(books).toEventually(equal(bookList), timeout: .seconds(2))
                     }
                 }
             }
