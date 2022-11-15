@@ -17,10 +17,10 @@ final class BookListViewController: BaseViewController {
     lazy var totalPriceTitleLabel = UILabel()
     lazy var totalPriceLabel = UILabel()
 
-    let bookLocalStorage: BookLocalStorage
+    let viewModel: BookListBusinessLogic
 
-    init(bookLocalStorage: BookLocalStorage = BookLocalStorageImpl()) {
-        self.bookLocalStorage = bookLocalStorage
+    init(viewModel: BookListBusinessLogic = BookListViewModel()) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -30,10 +30,35 @@ final class BookListViewController: BaseViewController {
 
     // MARK: Life Cycle
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         requestBookList()
+    }
+
+    override func bind() {
+
+        viewModel.bookListPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] bookList in
+                guard let self = self else { return }
+                let sections: [BookListSection] = bookList.isEmpty ? [.empty] : [.list(bookList.map { .book($0) })]
+                self.applySnapShot(section: sections)
+                self.activityIndicator.stopAnimating()
+            }
+            .store(in: &cancellables)
+
+        viewModel.totalPricePublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] totalPrice in
+                guard let self = self else { return }
+                if let price = Formatter.amountFormatter.string(from: NSNumber(value: totalPrice)) {
+                    self.totalPriceLabel.attributedText = NSMutableAttributedString()
+                        .bold(string: "\(price)", fontSize: 20)
+                        .medium(string: "원", fontSize: 15)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     override func setAttribute() {
@@ -80,34 +105,7 @@ final class BookListViewController: BaseViewController {
 
     func requestBookList() {
         activityIndicator.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now()+1.0) { [weak self] in
-            if let books = self?.bookLocalStorage.read() {
-                self?.display(books: books)
-            } else {
-                self?.display(books: [])
-            }
-            self?.activityIndicator.stopAnimating()
-        }
-    }
-
-    func calculateTotalPrice(books: [Book]) -> Int {
-        books.reduce(0) { partialResult, book in
-            return partialResult + book.price
-        }
-    }
-
-    func display(books: [Book]) {
-        if let price = Formatter.amountFormatter.string(from: NSNumber(value: calculateTotalPrice(books: books))) {
-            totalPriceLabel.attributedText = NSMutableAttributedString()
-                .bold(string: "\(price)", fontSize: 20)
-                .medium(string: "원", fontSize: 15)
-        }
-
-        if books.isEmpty {
-            applySnapShot(section: [.empty])
-        } else {
-            applySnapShot(section: [.list(books.map { .book($0) })])
-        }
+        viewModel.requestBookList()
     }
 
     func applySnapShot(section: [BookListSection]) {
@@ -187,14 +185,13 @@ extension BookListViewController: UITableViewDelegate {
         guard case .book(let model) = itemIdentifier else { return nil }
 
         let delete = UIContextualAction(style: .normal, title: "삭제") { [weak self] action, view, success in
-
-            guard let result = self?.bookLocalStorage.remove(data: model) else { fatalError() }
-            success(result)
-            self?.requestBookList()
+            guard let self = self else { return }
+            if self.viewModel.removeBook(book: model) {
+                self.requestBookList()
+            }
         }
         delete.image = UIImage(systemName: "xmark.circle")
         delete.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [delete])
     }
-
 }

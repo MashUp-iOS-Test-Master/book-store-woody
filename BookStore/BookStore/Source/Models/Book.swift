@@ -12,7 +12,7 @@ struct Book: Hashable, Codable {
     let price: Int
     let publishedAt: String
     let category: Category
-    let imageName: String?
+    let imageName: String
 
     enum Category: String, Codable {
         case sosal = "소설"
